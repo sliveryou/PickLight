@@ -1,0 +1,125 @@
+<!DOCTYPE HTML>
+<html>
+
+{% block title %}
+    <title>拾光</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+{% endblock %}
+
+{% block head %}
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='3rd/ui/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
+    <link rel="shortcut icon"
+          href="{{ url_for('static', filename='images/icon1.ico') }}">
+{% endblock %}
+
+<body>
+{% block navbar %}
+    <div class="nav-self">
+        <div style="padding-top: inherit" class="container">
+            <form class="form-inline" action="{{ url_for('web.search') }}" method="get">
+                <div class="flex-vertical-center-height">
+                    <div class="col-md-2  col-xs-3 logo">
+                        <img src="{{ url_for('static', filename='images/logo-picktime3.png') }} "/>
+                    </div>
+                    <div style="margin-left:20px;" class="col-md-7  col-xs-6 input-group">
+                        <input name="q" type="text" placeholder="ISBN、图书名称"
+                               class="form-control input-sm">
+                        <span class="input-group-btn">
+                            <input class="btn btn-search" type="submit" value="搜索"/>
+                        </span>
+                    </div>
+                    <div class="col-md-3 col-xs-3" style="padding-right: 0">
+                        <div class="container-height flex-vertical-center login-box">
+                            {% if not current_user.is_authenticated %}
+                                <div style="height: 100%; width: 100%;display: flex; justify-content: flex-end; align-items: center">
+                                    <a href="{{ url_for('web.login') }}">登录</a>
+                                    <a class="btn-end" href="{{ url_for('web.register') }}">注册</a>
+                                </div>
+                            {% else %}
+                                <a href="{{ url_for('web.personal_center') }}">{{ current_user.nickname }}的拾光</a>
+                                <a class="btn-end" href="{{ url_for('web.logout') }}">注销</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="sub-nav flex-vertical-center">
+        <div class="container" style="width: 100%">
+            <div class="row">
+                <div class="col-md-2 col-xs-3 col-md-offset-1">
+                    <a id="recent" href="{{ url_for('web.index') }}"
+                       class="flex-vertical-hor-center">
+                        <img src="{{ url_for('static', filename='images/upload1.png') }}"/>
+                        <span>最近上传</span>
+                    </a>
+                </div>
+                <div class="col-md-2 col-xs-3">
+                    <a id="gifts" href="{{ url_for('web.my_gifts') }}"
+                       class="flex-vertical-hor-center">
+                        <img src="{{ url_for('static', filename='images/gift1.png') }}"/>
+                        <span>赠送清单</span>
+                    </a>
+                </div>
+                <div class="col-md-2 col-xs-3">
+                    <a id="wishes" href="{{ url_for('web.my_wish') }}"
+                       class="flex-vertical-hor-center">
+                        <img src="{{ url_for('static', filename='images/wish1.png') }}"/>
+                        <span>心愿清单</span>
+                    </a>
+                </div>
+                <div class="col-md-2 col-xs-3">
+                    <a id="pending" href="{{ url_for('web.pending') }}"
+                       class="flex-vertical-hor-center">
+                        <img src="{{ url_for('static', filename='images/ship.png') }}"/>
+                        <span>时光漂流</span>
+                    </a>
+                </div>
+                <div class="col-md-2 col-xs-3">
+                    <a id="notes" href="{{ url_for('web.my_note') }}"
+                       class="flex-vertical-hor-center">
+                        <img src="{{ url_for('static', filename='images/note.png') }}"/>
+                        <span>笔记盛宴</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+<div class='container'>
+    <div class="row">
+        {% with messages = get_flashed_messages() %}
+            {% for message in messages %}
+                {% if message %}
+                    <div class="alert alert-warning" role="alert">{{ message }}</div>
+                {% endif %}
+            {% endfor %}
+        {% endwith %}
+        {% if form and form.errors %}
+            {% for key, error in form.errors.items() %}
+                <div class="alert alert-warning" role="alert">{{ error }}</div>
+            {% endfor %}
+        {% endif %}
+    </div>
+    {% block content %} {% endblock %}
+</div>
+
+<div id="footer" class="flex-hor-center">
+    <span>© 2018 created by Sliver</span>
+</div>
+</body>
+
+{% block scripts %}
+    <script src="{{ url_for('static', filename='3rd/jquery-3.2.1.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='3rd/bootstrap.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/base.js') }}"></script>
+    <script>
+        $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+    </script>
+{% endblock %}
+
+</html>

@@ -1,0 +1,426 @@
+{% extends "web/base.html" %}
+
+{% block head %}
+    {{ super() }}
+    {# 继承 base.html 原有的 head 区块，增加 index 页面所需的 css。 #}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-12">
+        </div>
+    </div>
+    <div id="books" class="row">
+
+        {% for book in recent %}
+            <div class="col-sm-5 book-container">
+                <a href="{{ url_for('web.book_detail', isbn=book.isbn) }}" class="link">
+                    <div class="col-md-4 no-padding">
+                        <img class="book-img cssshadow" src="{{ book.image }}">
+                    </div>
+                    <div style="margin-left: 0;" class="col-md-8 flex-vertical book-info">
+                        <span class="title">{{ book.title }}</span>
+                        <div class="description-font"><span>作者：</span><span>{{ book.author }}</span>
+                        </div>
+                        <span class="summary description-font">{{ book.summary }}</span>
+                    </div>
+                </a>
+            </div>
+        {% endfor %}
+
+        <div class="col-sm-5 book-container">
+            <a href="/book/9787532731541/detail" class="link">
+                <div class="col-md-4 no-padding">
+                    <img class="book-img cssshadow" src="https://img3.doubanio.com/lpic/s9822673.jpg">
+                </div>
+                <div style="margin-left: 0;" class="col-md-8 flex-vertical book-info">
+                    <span class="title">老人与海</span>
+                    <div class="description-font"><span>作者：</span><span>[美]欧内斯特·海明威</span>
+                    </div>
+                    <span class="summary description-font">1952年，小说《老人与海》的发表震惊文坛，并且它为作者海明威赢得了1952年普利策文学奖和1954年诺贝尔文学奖。这是一部描写人和大自然搏斗的小说。主人公古巴老渔夫圣地亚哥已有好久没打到鱼了，但他仍然每天驾着渔船出海去。有一天，他历尽艰难，钓到了一条足有十八英尺长的大鱼，可是，鲨鱼们涌来了……小说坚持了海明威的一贯主题：人在同外界势力搏斗中终归失败。但老渔夫在同象征着厄运的鲨鱼的斗争中，虽然失败</span>
+                </div>
+            </a>
+        </div>
+
+        <div class="col-sm-5 book-container">
+            <a href="/book/9787115207012/detail" class="link">
+                <div class="col-md-4 no-padding">
+                    <img class="book-img cssshadow" src="https://img1.doubanio.com/lpic/s10170467.jpg">
+                </div>
+                <div style="margin-left: 0;" class="col-md-8 flex-vertical book-info">
+                    <span class="title">锋利的jQuery</span>
+                    <div class="description-font"><span>作者：</span><span>单东林、张晓菲、魏然</span>
+                    </div>
+                    <span class="summary description-font">《锋利的jQuery》循序渐进地对jQuery的各种函数和方法调用进行了介绍，读者可以系统地掌握jQuery的DOM操作、事件监听和动画、表单操作、AJAX以及插件方面等知识点，并结合每个章节后面的案例演示进行练习，达到掌握核心知识点的目的。为使读者更好地进行开发实践，《锋利的jQuery》的最后一章将前7章讲解的知识点和效果进行了整合，打造出一个非常有个性的网站，并从案例研究、网站材料、网站结构、网站样式和网站脚本等方面指导读者参与到项目建设中来。\n《锋利的jQuery》适合Web开发人员阅读和参考。</span>
+                </div>
+            </a>
+        </div>
+
+
+        <div class="col-sm-5 book-container">
+            <a href="/book/9787539971810/detail" class="link">
+                <div class="col-md-4 no-padding">
+                    <img class="book-img cssshadow" src="https://img3.doubanio.com/lpic/s28049685.jpg">
+                </div>
+                <div style="margin-left: 0;" class="col-md-8 flex-vertical book-info">
+                    <span class="title">岛上书店</span>
+                    <div class="description-font"><span>作者：</span><span>[美]加·泽文</span>
+                    </div>
+                    <span class="summary description-font">岛上书店是间维多利亚风格的小屋，门廊上挂着褪色的招牌，上面写着： 没有谁是一座孤岛，每本书都是一个世界 A．J．费克里，人近中年，在一座与世隔绝的小岛上，经营一家书店。 命运从未眷顾过他，爱妻去世，书店危机，就连唯一值钱的宝贝也遭窃。他的人生陷入僵局，他的内心沦为荒岛。 就在此时，一个神秘的包袱出现在书店中，意外地拯救了陷于孤独绝境中的A．J．，成为了连接他和小姨子伊斯梅、警长兰比亚斯、出版社女业务员阿米莉娅之间的纽带，为他的生活带来了转机。 小岛上的几个生命紧紧相依，走出了人生的困境，而所有对书和生活的热爱都周而复始，愈加汹涌。</span>
+                </div>
+            </a>
+        </div>
+
+        <div class="col-sm-5 book-container">
+            <a href="/book/9787532725694/detail" class="link">
+                <div class="col-md-4 no-padding">
+                    <img class="book-img cssshadow" src="https://img3.doubanio.com/lpic/s1228930.jpg">
+                </div>
+                <div style="margin-left: 0;" class="col-md-8 flex-vertical book-info">
+                    <span class="title">挪威的森林</span>
+                    <div class="description-font"><span>作者：</span><span>[日]村上春树</span>
+                    </div>
+                    <span class="summary description-font">这是一部动人心弦的、平缓舒雅的、略带感伤的恋爱小说。小说主人公渡边以第一人称展开他同两个女孩间的爱情纠葛。渡边的第一个恋人直子原是他高中要好同学木月的女友，后来木月自杀了。一年后渡边同直子不期而遇并开始交往。此时的直子已变得娴静腼腆，美丽晶莹的眸子里不时掠过一丝难以捕捉的阴翳。两人只是日复一日地在落叶飘零的东京街头漫无目标地或前或后或并肩行走不止。直子20岁生日的晚上两人发生了性关系，不料第二天直子便不知去向。几个月后直子来信说她住进一家远在深山里的精神疗养院。渡边前去探望时发现直子开始带有成熟女性的丰腴与娇美。晚间两人虽同处一室，但渡边约束了自己，分手前表示永远等待直子。返校不久，由于一次偶然相遇，渡边开始与低年级的绿子交往。绿子同内向的直子截然相反，“简直就像迎着春天的晨光蹦跳到世界上来的一头小鹿”。这期间，渡边内心十分苦闷彷徨。一方面念念不忘直子缠绵的病情与柔情，一方面又难以抗拒绿子大胆的表白和迷人的活力。不久传来直子自杀的噩耗，渡边失魂魄地四处徒步旅行。最后，在直子同房病友玲子的鼓励下，开始摸索此后的人生。</span>
+                </div>
+            </a>
+        </div>
+
+        <div class="col-sm-5 book-container">
+            <a href="/book/9781590593561/detail" class="link">
+                <div class="col-md-4 no-padding">
+                    <img class="book-img cssshadow" src="https://img3.doubanio.com/lpic/s29631790.jpg">
+                </div>
+                <div style="margin-left: 0;" class="col-md-8 flex-vertical book-info">
+                    <span class="title">Dive Into Python</span>
+                    <div class="description-font"><span>作者：</span><span>MarkPilgrim</span>
+                    </div>
+                    <span class="summary description-font">Dive Into Python 是为有经验的程序员编写的一本 Python 书。</span>
+                </div>
+            </a>
+        </div>
+
+        <div class="col-sm-5 book-container">
+            <a href="/book/9787115417749/detail" class="link">
+                <div class="col-md-4 no-padding">
+                    <img class="book-img cssshadow" src="https://img3.doubanio.com/lpic/s28487645.jpg">
+                </div>
+                <div style="margin-left: 0;" class="col-md-8 flex-vertical book-info">
+                    <span class="title">程序员的数学3</span>
+                    <div class="description-font"><span>作者：</span><span>[日] 平冈和幸、[日] 堀玄</span>
+                    </div>
+                    <span class="summary description-font">本书沿袭“程序员的数学”系列平易近人的风格，用通俗的语言和具象的图表深入讲解了编程中所需的线性代数知识。内容包括向量、矩阵、行列式、秩、逆矩阵、线性方程、LU分解、特征值、对角化、Jordan标准型、特征值算法等。</span>
+                </div>
+            </a>
+        </div>
+
+        <div class="col-sm-5 book-container">
+            <a href="/book/9787508645131/detail" class="link">
+                <div class="col-md-4 no-padding">
+                    <img class="book-img cssshadow" src="https://img1.doubanio.com/lpic/s27359667.jpg">
+                </div>
+                <div style="margin-left: 0;" class="col-md-8 flex-vertical book-info">
+                    <span class="title">参与感</span>
+                    <div class="description-font"><span>作者：</span><span>黎万强</span>
+                    </div>
+                    <span class="summary description-font">◆雷军亲笔作序，小米联合创始人黎万强著。\n◆揭开小米4年600亿奇迹背后的理念、方法和案例。\n◆了解小米，必读本书！\n◆迄今为止关于小米最权威、最透彻、最全面的著作！\n◆新一代营销圣经。\n◆2014年最重磅图书！\n◆再掀企业界全民学习小米热潮！\n◆引爆出版界、财经界、IT界、科技界大震荡的“现象级热书”！\n◆全书四色印刷，包含46张海报级插图。\n翻开本书，就是翻开一个崭新的商业时代。\n当小米开发产品时，数十万消费者热情地出谋划策；当小米新品上线时，几分钟内，数百万消费者涌入网站参与抢购，数亿销售额瞬间完成；当小米要推广产品时，上千万消费者兴奋地奔走相告；当小米产品售出后，几千万消费者又积极地参与到产品的口碑传播和每周更新完善之中……\n这是中国商业史上前所未有的奇观。消费者和品牌从未如此相互贴近，互动从未如此广泛深入。通过互联网，消费者扮演着小米的产品经理、测试工程师、口碑推荐人、梦想赞助商等各种角色，他们热情饱满地参与到一个品牌发展的各个细节当中。\n小米现象的背后，是互联网时代人类信息组织结构的深层巨变，是小米公司对这一巨变的敏感觉察和精确把握。\n作为小米联合创始人，本书作者黎万强，真诚有趣地向你讲述小米公司创业几年来的内部故事，从公司创立到产品开发，从产品设计到品牌建设，从日常运营到营销推广，从服务理念到公司理念，等等等等，通过一个个真实的小细节、小故事，将外界觉得不可思议的事情，清晰透彻地道出其中的逻辑必然，并慷慨地将其独创的“参与感三三法则”和盘托出。</span>
+                </div>
+            </a>
+        </div>
+
+        <div class="col-sm-5 book-container">
+            <a href="/book/9787508673547/detail" class="link">
+                <div class="col-md-4 no-padding">
+                    <img class="book-img cssshadow" src="https://img3.doubanio.com/lpic/s29431480.jpg">
+                </div>
+                <div style="margin-left: 0;" class="col-md-8 flex-vertical book-info">
+                    <span class="title">小米生态链战地笔记</span>
+                    <div class="description-font"><span>作者：</span><span>小米生态链谷仓学院</span>
+                    </div>
+                    <span class="summary description-font">2013年下半年，小米开始做一件事，就是打造一个生态链布局IoT（物联网）；2016年年底，小米生态链上已经拥有了77家企业，生态链企业整体销售额突破100亿元。这3年，是小米生态链快速奔跑的3年，也是小米在商场中不断厮杀着成长的3年。\n3年，77家生态链企业，16家年销售额破亿，4家独角兽公司，边实战，边积累经验。\n小米生态链是一个基于企业生态的智能硬件孵化器。过去的3年中，在毫无先例可循、完全依靠自身实践的状态下，小米生态链摸索出了一系列独特的打法：“入资不控股，帮忙不添乱”的投资逻辑、以工程师为主的投资团队、矩阵式全方位孵化，成为全球智能硬件领域产品出货量最大、布局最广的生态系统。\n继小米内部营销手册《参与感》成为互联网企业营销的“爆款”参考之后，小米再度复盘，开启智能硬件全新生态，用真金白银打出来的战地经验。\n《小米生态链战地笔记》以小米生态链内部视角，全面记录、梳理了小米生态链的萌生、发展、壮大过程，以及如何以极致的产品杀入不同领域的故事。本书分为上下两篇。上篇为生态链篇，阐述小米硬件生态系统的搭建、布局、管理、发展和奔跑之中的思考；下篇为产品篇，阐述小米生态链产品从产品定义，到设计研发等各个维度中总结出的经验和教训。这些经验和教训，都是用真金白银换来的，既可以为制造企业转型提供全新的思路，也是硬件创业者的必读内容，对于互联网企业切入实体经济也是很好的参考。</span>
+                </div>
+            </a>
+        </div>
+
+        <div class="col-sm-5 book-container">
+            <a href="/book/9787111072522/detail" class="link">
+                <div class="col-md-4 no-padding">
+                    <img class="book-img cssshadow" src="https://img3.doubanio.com/lpic/s3213246.jpg">
+                </div>
+                <div style="margin-left: 0;" class="col-md-8 flex-vertical book-info">
+                    <span class="title">硅谷之火</span>
+                    <div class="description-font"><span>作者：</span><span>迈克尔·斯韦因</span>
+                    </div>
+                    <span class="summary description-font">我们今天正处于这样一个时代：充满幻想的人们发现他们获得了他们曾经梦寐以求的力量，并且可以利用这个力量来改造我们的世界。\n这是个转折的时代，跨国公司迷失了发展方向，而小企业家却举起了计算机革命的大旗，成了开拓未来的先锋。在这个时代里，计算机奇才的脸上露出了胜利的微笑，胸怀 大志者成了富有理想的人，而富有理想的人则成了亿万富翁。这是一场真正的革命，它促使人们变得伟大，变得富有而充满理想，自豪而富于爱心，努力实现前人从未达到的目标，乘风破浪去夺取这场计算机革命的胜利。</span>
+                </div>
+            </a>
+        </div>
+
+        <div class="col-sm-5 book-container">
+            <a href="/book/9787020065394/detail" class="link">
+                <div class="col-md-4 no-padding">
+                    <img class="book-img cssshadow" src="https://img3.doubanio.com/lpic/s2962510.jpg">
+                </div>
+                <div style="margin-left: 0;" class="col-md-8 flex-vertical book-info">
+                    <span class="title">无人生还</span>
+                    <div class="description-font"><span>作者：</span><span>[英]阿加莎·克里斯蒂</span>
+                    </div>
+                    <span class="summary description-font">十个互不相识的人，被富有的欧文先生邀请到了印地安岛上的私人别墅里。晚餐后，一个神秘的声音揭开了人们心中所各自隐藏着的可怕秘密。当天晚上，年轻的马斯顿先生离奇死去，古老的童谣就像诅咒一样笼罩着所有人，似乎有一双神秘的眼镜在时刻窥视着这场死亡游戏，到访者就像消失的印地安小瓷人一样一个又一个的走向死神……</span>
+                </div>
+            </a>
+        </div>
+
+        <div class="col-sm-5 book-container">
+            <a href="/book/9787115249494/detail" class="link">
+                <div class="col-md-4 no-padding">
+                    <img class="book-img cssshadow" src="https://img3.doubanio.com/lpic/s4669554.jpg">
+                </div>
+                <div style="margin-left: 0;" class="col-md-8 flex-vertical book-info">
+                    <span class="title">黑客与画家</span>
+                    <div class="description-font"><span>作者：</span><span>[美]保罗·格雷厄姆</span>
+                    </div>
+                    <span class="summary description-font">本书是硅谷创业之父Paul Graham 的文集，主要介绍黑客即优秀程序员的爱好和动机，讨论黑客成长、黑客对世界的贡献以及编程语言和黑客工作方法等所有对计算机时代感兴趣的人的一些话题。书中的内容不但有助于了解计算机编程的本质、互联网行业的规则，还会帮助读者了解我们这个时代，迫使读者独立思考。\n本书适合所有程序员和互联网创业者，也适合一切对计算机行业感兴趣的读者。</span>
+                </div>
+            </a>
+        </div>
+
+        <div class="col-sm-5 book-container">
+            <a href="/book/9781491946008/detail" class="link">
+                <div class="col-md-4 no-padding">
+                    <img class="book-img cssshadow" src="https://img3.doubanio.com/lpic/s27935775.jpg">
+                </div>
+                <div style="margin-left: 0;" class="col-md-8 flex-vertical book-info">
+                    <span class="title">Fluent Python</span>
+                    <div class="description-font"><span>作者：</span><span>Luciano Ramalho</span>
+                    </div>
+                    <span class="summary description-font">Learn how to write idiomatic, effective Python code by leveraging its best features. Python&#39;s simplicity quickly lets you become productive with it, but this often means you aren’t using everything the language has to offer. By taking you through Python’s key language features and libraries, this practical book shows you how to make your code shorter, faster, and more readable all at the same time—what experts consider Pythonic.\nMany programmers who learn Python basics fall into the trap of reinventing the wheel because of past experience in other languages, and try to bend the language to patterns that don&#39;t really apply to it. Author Luciano Ramalho, a Python Software Foundation member and Python programmer for 15 years, helps you drop your accent from another language so you can code Python fluently.\n•Learn practical applications of generators for database processing\n•Rethink some design patterns in a Python context\n•Examine attribute descriptors and when to use them: the key to ORMs\n•Explore Pythonic objects: protocols versus interfaces, abstract base classes and multiple inheritance</span>
+                </div>
+            </a>
+        </div>
+
+        <div class="col-sm-5 book-container">
+            <a href="/book/9787302209935/detail" class="link">
+                <div class="col-md-4 no-padding">
+                    <img class="book-img cssshadow" src="https://img3.doubanio.com/lpic/s4018970.jpg">
+                </div>
+                <div style="margin-left: 0;" class="col-md-8 flex-vertical book-info">
+                    <span class="title">学习OpenCV（中文版）</span>
+                    <div class="description-font"><span>作者：</span><span>Gary Bradski、Adrian Kaehler</span>
+                    </div>
+                    <span class="summary description-font">学习OpenCV（中文版），ISBN：9787302209935，作者：（美）布拉德斯基（Bradski，G.），（美）克勒（Kaehler，A.） 著，于仕琪，刘瑞祯 译</span>
+                </div>
+            </a>
+        </div>
+
+        <div class="col-sm-5 book-container">
+            <a href="/book/9787121200915/detail" class="link">
+                <div class="col-md-4 no-padding">
+                    <img class="book-img cssshadow" src="https://img1.doubanio.com/lpic/s26376659.jpg">
+                </div>
+                <div style="margin-left: 0;" class="col-md-8 flex-vertical book-info">
+                    <span class="title">Go Web编程</span>
+                    <div class="description-font"><span>作者：</span><span>谢孟军</span>
+                    </div>
+                    <span class="summary description-font">《Go Web编程》介绍如何用Go语言进行Web应用的开发，将Go语言的特性与Web开发实战组合到一起，帮读者成功地构建跨平台的应用程序，节省Go语言开发Web的宝贵时间。有了这些针对真实问题的解决方案放在手边，大多数编程难题都会迎刃而解。\n在《Go Web编程》中，读者可以更加方便地找到各种编程问题的解决方案，内容涵盖文本处理、表单处理、Session管理、数据库交互、加/解密、国际化和标准化，以及程序的部署维护等运维方面的知识，最后还介绍了一个快速开发的框架帮助您迅速进入Go语言的Web开发。</span>
+                </div>
+            </a>
+        </div>
+
+        <div class="col-sm-5 book-container">
+            <a href="/book/9787111215431/detail" class="link">
+                <div class="col-md-4 no-padding">
+                    <img class="book-img cssshadow" src="https://img3.doubanio.com/lpic/s2657821.jpg">
+                </div>
+                <div style="margin-left: 0;" class="col-md-8 flex-vertical book-info">
+                    <span class="title">计算机算法的设计与分析</span>
+                    <div class="description-font"><span>作者：</span><span>Alfred V.Aho (阿霍)、John E.Hopcroft (霍普克劳夫特)、Jeffrey D.Ullman (乌尔曼)</span>
+                    </div>
+                    <span class="summary description-font">本书是一部设计与分析领域的经典著作，着重介绍了计算机算法设计领域的基本原则和根本原理。书中深入分析了一些计算机模型上的算法，介绍了一些和设计有效算法有关的数据结构和编程技术，为读者提供了有关递归方法、分治方法和动态规划方面的详细实例和实际应用，并致力于更有效算法的设计和开发。同时，对NP完全等问题能否有效求解进行了分析，并探索了应用启发式算法解决问题的途径。另外，本书还提供了大量富有指导意义的习题。\n本书可以作为高等院校计算机算法设计与分析课程的本科生或研究生教材，也可以作为计算机理论研究人员、计算机算法设计人员的参考书。</span>
+                </div>
+            </a>
+        </div>
+
+        <div class="col-sm-5 book-container">
+            <a href="/book/9787302066422/detail" class="link">
+                <div class="col-md-4 no-padding">
+                    <img class="book-img cssshadow" src="https://img3.doubanio.com/lpic/s1326052.jpg">
+                </div>
+                <div style="margin-left: 0;" class="col-md-8 flex-vertical book-info">
+                    <span class="title">Python 编程金典</span>
+                    <div class="description-font">
+                        <span>作者：</span><span>P.J.Deitel、J.P.Liperi、B.A.Wiedermann、H.M.Deitel</span>
+                    </div>
+                    <span class="summary description-font">本书由全球著名的程序语言培训专家精心编著，解释了如何将Python用作常规用途，编写多层、客户机/服务器结构、数据库密集型、基于Internet和Web的应用程序。书中采用作者独创的“活代码”教学方式，层层揭示了Python这一程序设计语言的强大功能，并通过穿插在全书各处的屏幕输出和编程技巧与提示，帮助读者搭建良好的知识结构、养成良好的编程习惯、避免常见的编程错误以及写出高效、可靠的应用程序。</span>
+                </div>
+            </a>
+        </div>
+
+        <div class="col-sm-5 book-container">
+            <a href="/book/9787807695554/detail" class="link">
+                <div class="col-md-4 no-padding">
+                    <img class="book-img cssshadow" src="https://img1.doubanio.com/lpic/s27313078.jpg">
+                </div>
+                <div style="margin-left: 0;" class="col-md-8 flex-vertical book-info">
+                    <span class="title">想法与干法：年轻公务员成长笔记</span>
+                    <div class="description-font"><span>作者：</span><span>万川，任平</span>
+                    </div>
+                    <span class="summary description-font">《想法与干法：年轻公务员成长笔记》，源于公务员论坛“QZZN”上270万点击的技术帖《公务员：七年》，是80后公务员十年职场历练和职业心得的总结与分享。 作者万川、任平结合在省直机关、中央机关的工作经历和职业沉淀，以80后公务员的视角，围绕如何干好工作、如何实现进步这一话题展开，总结了年轻公务员的成长路径、工作方法、自我学习、心态平衡、时间管理、人际交往、面对困惑等各方面的经验和心得。 《想法与干法》，内容包括三部分：一是正文十二章，分享了年轻公务员的职场方法；二是职场“秘籍”，以专题形式总结了十二个方面的资料和思考；三是职场问答，以对话形式解答年轻朋友们在考公务员、做公务员时的具体困惑和问题。\n因内容非常切合80后、90后公务员的工作实际，具有很强的指导性和操作性，被誉为年轻公务员的职场秘笈和成长枕边书。\n80后公务员职场生存、进步法则，职场秘籍。十年一剑的职场心得，现实可行的职业思维，务实有效的工作方法。最具实用性的职场秘籍。\n直面困惑与问题，提供解决方案。12种职场方法，12个专题秘籍，32个职场问答……教你如何面对诱惑、走出迷茫、突破瓶颈、提升能力、快速成长！\n作者多年公务员核心部门重要岗位历练，对公务员职场有全面认识和深刻思考，针对广大年轻公务员成长和进步，提出的都是绝对管用的秘籍方法。\n中央党校教授、国家公务员初任培训班授课讲师毛卫平作序推荐。绝对正能量职场实用手册。</span>
+                </div>
+            </a>
+        </div>
+
+        <div class="col-sm-5 book-container">
+            <a href="/book/9787115354594/detail" class="link">
+                <div class="col-md-4 no-padding">
+                    <img class="book-img cssshadow" src="https://img3.doubanio.com/lpic/s27345094.jpg">
+                </div>
+                <div style="margin-left: 0;" class="col-md-8 flex-vertical book-info">
+                    <span class="title">啊哈!算法</span>
+                    <div class="description-font"><span>作者：</span><span>啊哈磊</span>
+                    </div>
+                    <span class="summary description-font">这不过是一本有趣的算法书而已。和别的算法书比较，如果硬要说它有什么特点的话，那就是你能看懂它。\n这是一本充满智慧和趣味的算法入门书。没有枯燥的描述，没有难懂的公式，一切以实际应用为出发点，\n通过幽默的语言配以可爱的插图来讲解算法。你更像是在阅读一个个轻松的小故事或是在玩一把趣味解谜\n游戏，在轻松愉悦中便掌握算法精髓，感受算法之美。\n本书中涉及到的数据结构有栈、队列、链表、树、并查集、堆和图等；涉及到的算法有排序、枚举、\n深度和广度优先搜索、图的遍历，当然还有图论中不可以缺少的四种最短路径算法、两种最小生成树算法、\n割点与割边算法、二分图的最大匹配算法等。\n网名啊哈磊。\n曾在中科院玩过单片机。武汉大学历史上第一位以本科生身份加入MSRA（微软亚洲研究院）的小伙伴，在机器学习组从事搜索引擎方面的研究。\n发表国际会议论文一篇（IEEE）。\n全国青少年信息学奥林匹克金牌教练。\n超萌超简洁的C语言编译器——“啊哈C编译器”作者。\n2013年我的著作，有趣的编程科普书《啊哈C！》出版。\n网址：www.ahalei.com\n微博：weibo.com/ahalei\n非常喜欢小朋友，每天都过得都非常开心。\n至于为什么叫“啊哈磊”，因为我觉得这是一个很喜庆的名字。</span>
+                </div>
+            </a>
+        </div>
+
+        <div class="col-sm-5 book-container">
+            <a href="/book/9787115187314/detail" class="link">
+                <div class="col-md-4 no-padding">
+                    <img class="book-img cssshadow" src="https://img3.doubanio.com/lpic/s9114674.jpg">
+                </div>
+                <div style="margin-left: 0;" class="col-md-8 flex-vertical book-info">
+                    <span class="title">PHP Web 2.0开发实战</span>
+                    <div class="description-font"><span>作者：</span><span>泽瓦斯</span>
+                    </div>
+                    <span class="summary description-font">本书通过一个完整的Web 2.0应用——带有动态图库、搜索和地图功能的博客系统详细介绍了Web开发的全过程。首先讨论了Web应用的规划与设计，然后逐章实现各个具体特性，包括网站主页、用户主页、用户注册页面、账户登录和管理页面、用户博客系统、网站搜索以及应用管理等，最后介绍部署和维护。\n本书适合中、高级的PHP程序员阅读。</span>
+                </div>
+            </a>
+        </div>
+
+        <div class="col-sm-5 book-container">
+            <a href="/book/9787115155092/detail" class="link">
+                <div class="col-md-4 no-padding">
+                    <img class="book-img cssshadow" src="https://img3.doubanio.com/lpic/s2160043.jpg">
+                </div>
+                <div style="margin-left: 0;" class="col-md-8 flex-vertical book-info">
+                    <span class="title">PHP与MySQL 5程序设计</span>
+                    <div class="description-font"><span>作者：</span><span>W.Jason Gilmore</span>
+                    </div>
+                    <span class="summary description-font">本书是久负盛名的经典著作，以涵盖全面详实而著称，对主题的选取和组织从实用出\n发，在讲述知识之外还加入了作者自己的应用经验，并提供了密集的实战代码示例，充\n分体现了作者深厚的开发功力。书中对PHP的介绍是迄今为止最为全面的</span>
+                </div>
+            </a>
+        </div>
+
+        <div class="col-sm-5 book-container">
+            <a href="/book/9787111262817/detail" class="link">
+                <div class="col-md-4 no-padding">
+                    <img class="book-img cssshadow" src="https://img3.doubanio.com/lpic/s3773304.jpg">
+                </div>
+                <div style="margin-left: 0;" class="col-md-8 flex-vertical book-info">
+                    <span class="title">PHP和MySQL Web开发(原书第4版)</span>
+                    <div class="description-font"><span>作者：</span><span>Luke Welling、Laura Thomson</span>
+                    </div>
+                    <span class="summary description-font">本书将PHP开发与MySQL应用相结合，分别对PHP和MySQL做了深入浅出的分析，不仅介绍PHP和MySQL的一般概念，而且对PHP和MySQL的Web应用做了较全面的阐述，并包括几个经典且实用的例子。.\n本书是第4版，经过了全面的更新、重写和扩展，包括PHP 5.3最新改进的特性（例如，更好的错误和异常处理），MySQL的存储过程和存储引擎，Ajax技术与Web 2.0以及Web应用需要注意的安全问题。...</span>
+                </div>
+            </a>
+        </div>
+
+        <div class="col-sm-5 book-container">
+            <a href="/book/9787111226062/detail" class="link">
+                <div class="col-md-4 no-padding">
+                    <img class="book-img cssshadow" src="https://img3.doubanio.com/lpic/s2857246.jpg">
+                </div>
+                <div style="margin-left: 0;" class="col-md-8 flex-vertical book-info">
+                    <span class="title">鸟哥的Linux私房菜</span>
+                    <div class="description-font"><span>作者：</span><span>鸟哥</span>
+                    </div>
+                    <span class="summary description-font">《鸟哥的Linux私房菜:服务器架设篇(第2版)》是对连续三年蝉联畅销书排行榜前10名的《Linux鸟哥私房菜一服务器架设篇》的升级版，新版本根据目前服务器与网络环境做了大幅度修订与改写。\n全书共3部分，第1部分为架站前的进修专区，包括在架设服务器前必须具备的网络基础知识、Linux常用网络命令、Linux网络侦错步骤，以及服务器架站流程：第2部分为主机的简易防火措施，包括限制Linux对外连接端口、Linux自动在线升级、路由器设置、防火墙设置等各项措施，告诉您如何保护主机，并培养良好的操作习惯；第3部分为局域网与小型企业内各种常见服务器的架设，包括DHCP、NIS、Telnet、NFS、SSH、vsFTPd、SAMBA、NTP、www、Mail、DNS等，从最初的规划到实际硬盘的分区、软件版本的选择与安装，以及设置成功后的监测、维护及备份工作，都一一给出详实的分析与讲解。各章共提供200多道练习题，方便读者自我检测；还可通过“参考资料”达到能力的拓展与提高。</span>
+                </div>
+            </a>
+        </div>
+
+        <div class="col-sm-5 book-container">
+            <a href="/book/9787115246882/detail" class="link">
+                <div class="col-md-4 no-padding">
+                    <img class="book-img cssshadow" src="https://img1.doubanio.com/lpic/s4643548.jpg">
+                </div>
+                <div style="margin-left: 0;" class="col-md-8 flex-vertical book-info">
+                    <span class="title">亲密关系（第5版）</span>
+                    <div class="description-font">
+                        <span>作者：</span><span>罗兰•米勒 (Rowland Miller)、丹尼尔•珀尔曼 (Daniel Perlman)</span>
+                    </div>
+                    <span class="summary description-font">爱情是人类情感中最美妙的一种体验，古今中外关于爱情的伟大文学作品有许多，但从心理学角度对两性关系进行科学而系统总结的专著尚为数不多。\n《亲密关系》从一出版，就立即获得了读者的普遍喜爱，不仅得到了专业人士的首肯，更是得到普通读者的高度评价。作者综合了心理学多个分支的研究理论和成果，用饶有趣味的论述，总结出人们在交往与沟通、爱情与承诺、婚姻与性爱、嫉妒与背叛等方面的行为特点和规律。\n本书内容丰富、语言优美；既注重专业性，有强调可读性。研究亲密关系的专业人士可以从中得到学习和参考；而对于社会大众来说，只要他（她）想获得一份满意的亲密关系，都可以从中得到启发。</span>
+                </div>
+            </a>
+        </div>
+
+        <div class="col-sm-5 book-container">
+            <a href="/book/9787533300814/detail" class="link">
+                <div class="col-md-4 no-padding">
+                    <img class="book-img cssshadow" src="https://img1.doubanio.com/lpic/s10069398.jpg">
+                </div>
+                <div style="margin-left: 0;" class="col-md-8 flex-vertical book-info">
+                    <span class="title">金瓶梅</span>
+                    <div class="description-font"><span>作者：</span><span>兰陵笑笑生</span>
+                    </div>
+                    <span class="summary description-font">本书由王汝梅与李昭恂、于凤树校点。</span>
+                </div>
+            </a>
+        </div>
+
+        <div class="col-sm-5 book-container">
+            <a href="/book/9787020008742/detail" class="link">
+                <div class="col-md-4 no-padding">
+                    <img class="book-img cssshadow" src="https://img3.doubanio.com/lpic/s1147854.jpg">
+                </div>
+                <div style="margin-left: 0;" class="col-md-8 flex-vertical book-info">
+                    <span class="title">水浒传（全二册）</span>
+                    <div class="description-font"><span>作者：</span><span>罗贯中</span>
+                    </div>
+                    <span class="summary description-font">《水浒传》是我国第一部以农民起义为题材的长篇章回小说，是我国文学史上一座巍然屹立的丰碑，也是世界文学宝库中一颗光彩夺目的明珠。数百年来，它一直深受我国人民的喜爱，并被译为多种文字，成为我国流传最为广泛的古代长篇小说之一。\n《水浒传》具体而生动地描写了以宋江为首的农民起义发生、发展直至失财的整个过程，揭露了封建社会的黑暗、腐朽和统治阶级的种种罪恶，热情歌颂了起义英雄的反抗精神和正义行动，塑造了一大批梁山好汉的光辉形象，形象地揭示了封建社会“官逼民反”的客观真理和农民起义失败的内在原因。</span>
+                </div>
+            </a>
+        </div>
+
+        <div class="col-sm-5 book-container">
+            <a href="/book/9787020002207/detail" class="link">
+                <div class="col-md-4 no-padding">
+                    <img class="book-img cssshadow" src="https://img1.doubanio.com/lpic/s1070959.jpg">
+                </div>
+                <div style="margin-left: 0;" class="col-md-8 flex-vertical book-info">
+                    <span class="title">红楼梦</span>
+                    <div class="description-font"><span>作者：</span><span>[清] 曹雪芹 著、高鹗 续</span>
+                    </div>
+                    <span class="summary description-font">《红楼梦》是一部百科全书式的长篇小说。以宝黛爱情悲剧为主线，以四大家族的荣辱兴衰为背景，描绘出18世纪中国封建社会的方方面面，以及封建专制下新兴资本主义民主思想的萌动。结构宏大、情节委婉、细节精致，人物形象栩栩如生，声口毕现，堪称中国古代小说中的经 典。\n由红楼梦研究所校注、人民文学出版社出版的《红楼梦》以庚辰（1760）本《脂砚斋重评石头记》为底本，以甲戌（1754）本、已卯（1759）本、蒙古王府本、戚蓼生序本、舒元炜序本、郑振铎藏本、红楼梦稿本、列宁格勒藏本（俄藏本）、程甲本、程乙本等众多版本为参校本，是一个博采众长、非常适合大众阅读的本子；同时，对底本的重要修改，皆出校记，读者可因以了解《红楼梦》的不同版本状况。\n红学所的校注本已印行二十五年，其间1994年曾做过一次修订，又十几年过去，2008年推出修订第三版，体现了新的校注成果和科研成果。\n关于《红楼梦》的作者，原本就有多种说法及推想，“前八十回曹雪芹著、后四十回高鹗续”的说法只是其中之一，这次修订中校注者改为“前八十回曹雪芹著；后四十回无名氏续，程伟元、高鹗整理”，应当是一种更科学的表述，体现了校注者对这一问题的新的认识。\n现在这个修订后的《红楼梦》是更加完善。</span>
+                </div>
+            </a>
+        </div>
+
+        <div class="col-sm-5 book-container">
+            <a href="/book/9787020008735/detail" class="link">
+                <div class="col-md-4 no-padding">
+                    <img class="book-img cssshadow" src="https://img3.doubanio.com/lpic/s1627374.jpg">
+                </div>
+                <div style="margin-left: 0;" class="col-md-8 flex-vertical book-info">
+                    <span class="title">西游记（全二册）</span>
+                    <div class="description-font"><span>作者：</span><span>吴承恩</span>
+                    </div>
+                    <span class="summary description-font">《西游记》主要描写的是孙悟空保唐僧西天取经，历经九九八十一难的故事。唐僧取经是历史上一件真实的事。大约距今一千三百多年前，即唐太宗贞观元年（627），年仅25岁的青年和尚玄奘离开京城长安，只身到天竺（印度）游学。他从长安出发后，途经中亚、阿富汗、巴基斯坦，历尽艰难险阻，最后到达了印度。他在那里学习了两年多，并在一次大型佛教经学辩论会任主讲，受到了赞誉。贞观十九年（645）玄奘回到了长安，带回佛经657部。他这次西天取经，前后十九年，行程几万里，是一次传奇式的万里长征，轰动一时。后来玄奘口述西行见闻，由弟子辩机辑录成《大唐西域记》十二卷。但这部书主要讲述了路上所见各国的历史、地理及交通，没有什么故事。及到他的弟子慧立、彦琮撰写的《大唐大慈恩寺三藏法师传》，则为玄奘的经历增添了许多神话色彩，从此，唐僧取经的故事便开始在民间广为流传。南宋有《大唐三藏取经诗话》，金代院本有《唐三藏》、《蟠桃会》等，元杂剧有吴昌龄的《唐三藏西天取经》、无名氏的《二郎神锁齐大圣》等，这些都为《西游记》的创作奠定了基础。吴承恩也正是在民间传说和话本、戏曲的基础上，经过艰苦的再创造，完成了这部令中华民族为之骄傲的伟大大文学巨著。吴承恩，字汝忠，号射阳山人，淮安府山阳（今江苏省淮安市）人。约生于明弘治十三年至正德初年之间（1500—1510），约卒于万历十年（1582）。吴承恩的曾祖父、祖父都是读书人，任过县学的训导、教谕。但到了他父亲吴锐这一辈，由于家贫困，出赘徐家，“遂袭徐氏业，坐肆中”，当起了小商人。尽管如此，吴家却不失读书的传统。据说其父吴锐虽为商人，不仅为人正派，而且好读书，好谈时政，这自然对吴承恩产生较大影响。吴承恩从小就很聪明，很早入了学，少年得志，名满乡里。天启《淮安府志》卷十六说吴承恩“性敏而多慧，博极群书，为诗文，下笔立成。”但成年后的吴承恩却很不顺利，在科举进身的道路上屡遭挫折，到四十多岁才补了一个岁贡生，五十多岁任过浙江长兴县丞，后又担任过荆王府纪善，这是同县丞级别差不多的闲职。吴承恩创作《西游记》大约是中年以后，或认为是晚年所作，具体时间无法确定。除《西游记》外，他还创作有长诗《二郎搜山图歌》和《禹鼎志》。现存《射阳先生存稿》四卷，包括诗一卷、散文三卷，是吴承恩逝世后由丘度编订而成。 《西游记》全书一百回，从大的结构上看，可分成三个部分。第一回至第八回是第一部分，主要写了孙悟空出世、拜师、大闹天宫，这是全书最精彩的章节，热闹非凡，孙悟空上天入地好一顿折腾，将他的反抗性格表现得淋漓尽致。第八回至第十二回是第二部分，主要写了唐僧的出身及取经的缘由。第十三回至最后一回是第三部分，主要写唐僧西天取经，路上先后收了孙悟空、猪八戒、沙和尚三个徒弟，并历经九九八十一难，终于取到了真经，修成了正果。 《西游记》向人们展示了一个绚丽多彩的神魔世界，人们无不在作者丰富而大胆的艺术想象面前惊叹不已。然而，任何一部文学作品都是一定社会生活的反映，作为神魔小说杰出代表的《西游记》亦不例外。正如鲁迅先生在《中国小说史略》中指出，《西游记》“讽刺揶揄则取当时世态，加以铺张描写”。又说：“作者禀性，‘复善谐剧’，故虽述变幻恍忽之事，亦每杂解颐之言，使神魔皆有人情，精魅亦通世故。”的确如此。 通过《西游记》中虚幻的神魔世界，我们处处可以看到现实社会的投影。如在孙悟空的形象创造上，就寄托了作者的理想。 孙悟空那种不屈不挠的斗争精神，奋起金箍棒，横扫一切妖魔鬼怪的大无畏气概，反映了人民的愿望和要求。他代表了一种正义的力量，表现出人民战胜一切困难的必胜信念。又如取经路上遇到的那些妖魔，或是自然灾难的幻化，或是邪恶势力的象征。他们的贪婪、凶残、阴险和狡诈，也正是封建社会里的黑暗势力的特点。不仅如此，玉皇大帝统治的天宫、如来佛祖管辖的西方极乐世界，也都浓浓地涂上了人间社会的色彩。而作者对封建社会最高统治者的态度也颇可玩味，在《西游记》中，简直找不出一个称职的皇帝；至于昏聩无能的玉皇大帝、宠信妖怪的车迟国国王、要将小儿心肝当药引子的比丘国国王，则不是昏君就是暴君。对这些形象的刻画，即使是信手拈来，也无不具有很强的现实意义。 《西游记》不仅有较深刻的思想内容，艺术上也取得了很高的成就。它以丰富奇特的艺术想象、生动曲折的故事情节，栩栩如生的人物形象，幽默诙谐的语言，构筑了一座独具特色的《西游记》艺术宫殿。但我认为，《西游记》在艺术上的最大成就，是成功地创造了孙悟空、猪八戒这两个不朽的艺术形象。 孙悟空是《西游记》中第一主人公，是个非常了不起的英雄。他有无穷的本领，天不怕地不怕，具有不屈的反抗精神。他有着大英雄的不凡气度，也有爱听恭维话的缺点。他机智勇敢又诙谐好闹。而他最大的特点就是敢斗。与至高至尊的玉皇大帝敢斗，楞是叫响了“齐天大圣”的美名；与妖魔鬼怪敢斗，火眼金睛决不放过一个妖魔，如意金箍棒下决不对妖魔留情；与一切困难敢斗，决不退却低头。这就是孙悟空，一个光彩夺目的神话英雄。说到猪八戒，他的本事比孙悟空可差远了，更谈不上什么光辉高大，但这个形象同样刻画得非常好。 猪八戒是一个喜剧形象，他憨厚老实，有力气，也敢与妖魔作斗争，是孙悟空第一得力助手。但他又满身毛病，如好吃，好占小便宜，好女色，怕困难，常常要打退堂鼓，心里老想着高老庄的媳妇；他有时爱撒个谎，可笨嘴拙腮的又说不圆；他还时不时地挑拨唐僧念紧箍咒，让孙悟空吃点苦头；他甚至还藏了点私房钱，塞在耳朵里。他的毛病实在多，这正是小私有者的恶习。作者对猪八戒缺点的批评是很严厉的，但又是善意的。他并不是一个被否定的人物，因此人们并不厌恶猪八戒，相反却感到十分真实可爱。唐僧的形象写得也不错，但比起孙悟空、猪八戒来，则要逊色得多。沙僧更是缺少鲜明的性格特点，这不能不说是《西游记》的缺憾。尽管如此，《西游记》在艺术上取得的成就仍是十分惊人的，孙悟空、猪八戒这两个形象，以其鲜明的个性特征，在中国文学史上立起了一座不朽的艺术丰碑。</span>
+                </div>
+            </a>
+        </div>
+
+        <div class="col-sm-5 book-container">
+            <a href="/book/9787530208694/detail" class="link">
+                <div class="col-md-4 no-padding">
+                    <img class="book-img cssshadow" src="https://img1.doubanio.com/lpic/s2838737.jpg">
+                </div>
+                <div style="margin-left: 0;" class="col-md-8 flex-vertical book-info">
+                    <span class="title">半生缘</span>
+                    <div class="description-font"><span>作者：</span><span>张爱玲</span>
+                    </div>
+                    <span class="summary description-font">他和曼桢认识，已经是多年前的事了。算起来倒已经有十四年了——真吓人一跳！马上使他连带地觉得自己已老了许多。日子过得真快，尤其对于中年以后的人，十年八年都好像是指顾间的事。可是对于年轻人，三年五载就可以是一生一世。他和曼桢从认识到分手，不过几年的工夫，这几年里面却经过这么许多事情，仿佛把生老病死一切的哀乐都经历到了。\n曼桢曾经问过他，他是什么时候起开始喜欢她的。他当然回答说：“第一次看见的时候。”说那句话的时候是在那样的一种心醉的情形下，简直什么都可以相信，自己当然绝对相信那不是谎话。其实他到底是什么时候第一次看见她的，根本就记不清楚了。</span>
+                </div>
+            </a>
+        </div>
+{% endblock %}
